@@ -1,15 +1,13 @@
-/* eslint-disable react/prop-types */
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
+import { Context } from '../../context/context';
 import '../../App.css';
 
-// eslint-disable-next-line object-curly-newline
-function Input({ type, getInputData, address, setAddAddress }) {
-  // eslint-disable-next-line arrow-body-style
+function Input({ type }) {
   const InputRef = useRef();
+  const { getInputData, state, setAddAddress } = useContext(Context);
   useEffect(() => {
     InputRef.current.value = '';
-  }, [address]);
-  // eslint-disable-next-line arrow-body-style
+  }, [state.address]);
   const checkType = () => {
     // eslint-disable-next-line no-nested-ternary
     return type === 'NAME' ? '이름' : type === 'NUMBER' ? '전화번호' : type;

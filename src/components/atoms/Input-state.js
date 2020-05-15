@@ -1,22 +1,29 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../../App.css';
+import { Context } from '../../context/context';
 
-function InputState({ inputValue, numberValue }) {
-  const [state, setState] = useState({ name: inputValue, number: numberValue });
+function InputState() {
+  const { state } = useContext(Context);
+  const [inputState, setState] = useState({
+    name: state.inputName,
+    number: state.inputNnumber,
+  });
   useEffect(() => {
-    setState({ name: inputValue, number: numberValue });
-  }, [inputValue, numberValue]);
+    setState({ name: state.inputName, number: state.inputNumber });
+  }, [state, state.inputName, state.inputNumber]);
 
   const setNameState = () => {
-    const isName = state.name === '' ? '이름을 입력해 주세요' : state.name;
+    // eslint-disable-next-line operator-linebreak
+    const isName =
+      inputState.name === '' ? '이름을 입력해 주세요' : inputState.name;
     return isName;
   };
 
   const setNumberState = () => {
     // eslint-disable-next-line operator-linebreak
     const isNumber =
-      state.number === '' ? '전화번호를 입력해 주세요' : state.number;
+      inputState.number === '' ? '전화번호를 입력해 주세요' : inputState.number;
     return isNumber;
   };
   return (

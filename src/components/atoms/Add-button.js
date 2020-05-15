@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useContext } from 'react';
 import '../../App.css';
+import { Context } from '../../context/context';
 
-function AddButton({ setAddAddress }) {
+function AddButton() {
+  const { setAddAddress } = useContext(Context);
   return (
     <button
       type="button"

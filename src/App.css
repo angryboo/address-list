@@ -143,6 +143,11 @@ ul {
 
   display: flex;
   align-items: center;
+  transition: 0.5s;
+}
+
+.address-list-item.select {
+  background-color: rgba(209, 255, 163, 0.651);
 }
 
 .item-name {
